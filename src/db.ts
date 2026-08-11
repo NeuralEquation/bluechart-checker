@@ -91,9 +91,9 @@ export async function clearAll() {
 }
 
 export async function restoreBackup(value: unknown, mode: "merge" | "replace") {
-  if (!value || typeof value !== "object") throw new Error("繝舌ャ繧ｯ繧｢繝・・蠖｢蠑上′荳肴ｭ｣縺ｧ縺吶・);
+  if (!value || typeof value !== "object") throw new Error("バックアップ形式が不正です。");
   const data = value as { catalog?: StoredCatalogExample[]; progress?: Progress[]; history?: ReviewHistory[]; settings?: AppSettings };
-  if (!Array.isArray(data.progress) && !Array.isArray(data.catalog)) throw new Error("蠕ｩ蜈・〒縺阪ｋ繝・・繧ｿ縺後≠繧翫∪縺帙ｓ縲・);
+  if (!Array.isArray(data.progress) && !Array.isArray(data.catalog)) throw new Error("復元できるデータがありません。");
   const db = await getDb();
   const tx = db.transaction(["catalog", "progress", "history", "settings"], "readwrite");
   if (mode === "replace") await Promise.all(Array.from(tx.objectStoreNames).map((name) => tx.objectStore(name).clear()));
@@ -106,4 +106,3 @@ export async function restoreBackup(value: unknown, mode: "merge" | "replace") {
   if (data.settings) await tx.objectStore("settings").put(data.settings);
   await tx.done;
 }
-
