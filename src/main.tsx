@@ -12,3 +12,4 @@ const updateSW = registerSW({
 window.addEventListener("pwa-apply-update", () => void updateSW(true));
 
 createRoot(document.getElementById("root")!).render(<StrictMode><App /></StrictMode>);
+
