@@ -32,7 +32,25 @@ export async function getAllData() {
   const [catalog, progress, history, stored] = await Promise.all([
     db.getAll("catalog"), db.getAll("progress"), db.getAll("history"), db.get("settings", "app")
   ]);
-  const settings: AppSettings = stored ?? { key: "app", enabledChapters: defaultEnabledChapters(), theme: "system", autoAdvance: true, lastRoute: "home" };
+  const defaults: AppSettings = {
+    key: "app",
+    enabledChapters: defaultEnabledChapters(),
+    theme: "system",
+    autoAdvance: true,
+    lastRoute: "home",
+    lastSubjectCode: "1",
+    lastChapterCode: "",
+    lastExampleId: "",
+    listPreferences: {}
+  };
+  const settings: AppSettings = stored
+    ? {
+        ...defaults,
+        ...stored,
+        enabledChapters: { ...defaults.enabledChapters, ...stored.enabledChapters },
+        listPreferences: stored.listPreferences ?? {}
+      }
+    : defaults;
   return { catalog, progress, history, settings };
 }
 
@@ -47,7 +65,10 @@ export async function saveSettings(settings: AppSettings) { await (await getDb()
 
 export async function saveProgress(current: Progress | undefined, patch: Partial<Pick<Progress, "rating" | "needsReview" | "memo">> & { exampleId: string }, addHistory = false) {
   const now = new Date().toISOString();
-  const base: Progress = current ?? { exampleId: patch.exampleId, rating: 0, needsReview: false, memo: "", reviewCount: 0, firstReviewedAt: null, lastReviewedAt: null, updatedAt: now };
+  const db = await getDb();
+  const tx = db.transaction(["progress", "history"], "readwrite");
+  const latest = await tx.objectStore("progress").get(patch.exampleId);
+  const base: Progress = latest ?? current ?? { exampleId: patch.exampleId, rating: 0, needsReview: false, memo: "", reviewCount: 0, firstReviewedAt: null, lastReviewedAt: null, updatedAt: now };
   const ratingChanged = patch.rating !== undefined && patch.rating !== base.rating;
   const next: Progress = {
     ...base, ...patch, updatedAt: now,
@@ -55,8 +76,6 @@ export async function saveProgress(current: Progress | undefined, patch: Partial
     firstReviewedAt: ratingChanged ? (base.firstReviewedAt ?? now) : base.firstReviewedAt,
     lastReviewedAt: ratingChanged ? now : base.lastReviewedAt
   };
-  const db = await getDb();
-  const tx = db.transaction(["progress", "history"], "readwrite");
   await tx.objectStore("progress").put(next);
   if (ratingChanged || addHistory) await tx.objectStore("history").add({ exampleId: next.exampleId, rating: next.rating as Rating, needsReview: next.needsReview, memoSnapshot: next.memo, reviewedAt: now });
   await tx.done;
@@ -72,9 +91,9 @@ export async function clearAll() {
 }
 
 export async function restoreBackup(value: unknown, mode: "merge" | "replace") {
-  if (!value || typeof value !== "object") throw new Error("バックアップ形式が不正です。");
+  if (!value || typeof value !== "object") throw new Error("繝舌ャ繧ｯ繧｢繝・・蠖｢蠑上′荳肴ｭ｣縺ｧ縺吶・);
   const data = value as { catalog?: StoredCatalogExample[]; progress?: Progress[]; history?: ReviewHistory[]; settings?: AppSettings };
-  if (!Array.isArray(data.progress) && !Array.isArray(data.catalog)) throw new Error("復元できるデータがありません。");
+  if (!Array.isArray(data.progress) && !Array.isArray(data.catalog)) throw new Error("蠕ｩ蜈・〒縺阪ｋ繝・・繧ｿ縺後≠繧翫∪縺帙ｓ縲・);
   const db = await getDb();
   const tx = db.transaction(["catalog", "progress", "history", "settings"], "readwrite");
   if (mode === "replace") await Promise.all(Array.from(tx.objectStoreNames).map((name) => tx.objectStore(name).clear()));
@@ -87,3 +106,4 @@ export async function restoreBackup(value: unknown, mode: "merge" | "replace") {
   if (data.settings) await tx.objectStore("settings").put(data.settings);
   await tx.done;
 }
+
