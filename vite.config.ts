@@ -14,7 +14,7 @@ export default defineConfig({
       manifest: {
         name: "BlueChart Check",
         short_name: "BlueChart",
-        description: "髱偵メ繝｣繝ｼ繝井ｾ矩｡後・蛟倶ｺｺ逕ｨ繝√ぉ繝・け繧ｷ繝ｼ繝・,
+        description: "青チャート例題の個人用チェックシート",
         theme_color: "#0b63ce",
         background_color: "#f4f8ff",
         display: "standalone",
@@ -34,4 +34,3 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"]
   }
 });
-
