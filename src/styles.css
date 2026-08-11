@@ -179,4 +179,3 @@ button:active{transform:scale(.97)}
   :root:not([data-theme="light"]) .filter-chips button,:root:not([data-theme="light"]) .filter-footer select{background:#10263a;color:var(--ink)}
 }
 :root[data-theme="dark"]{--canvas:#091421;--card:#122337;--line:#294057;--soft:#1a3653}
-

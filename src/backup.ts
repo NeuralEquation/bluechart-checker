@@ -12,4 +12,3 @@ export function downloadJson(value: unknown, filename: string) {
   const a = document.createElement("a"); a.href = url; a.download = filename; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 500);
 }
-

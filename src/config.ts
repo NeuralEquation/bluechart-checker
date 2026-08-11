@@ -1,39 +1,39 @@
 export const SUBJECTS: Record<string, string> = {
-  "1": "謨ｰ蟄ｦI", "2": "謨ｰ蟄ｦII", "3": "謨ｰ蟄ｦIII",
-  "4": "謨ｰ蟄ｦA", "5": "謨ｰ蟄ｦB", "6": "謨ｰ蟄ｦC"
+  "1": "数学I", "2": "数学II", "3": "数学III",
+  "4": "数学A", "5": "数学B", "6": "数学C"
 };
 
 export const SUBJECT_ORDER = ["1", "4", "2", "5", "3", "6"];
 
 export const CHAPTERS: Record<string, { subject: string; chapterNumber: number; title: string; defaultEnabled: boolean }> = {
-  "11": { subject: "謨ｰ蟄ｦI", chapterNumber: 1, title: "謨ｰ縺ｨ蠑・, defaultEnabled: false },
-  "12": { subject: "謨ｰ蟄ｦI", chapterNumber: 2, title: "髮・粋縺ｨ蜻ｽ鬘・, defaultEnabled: false },
-  "13": { subject: "謨ｰ蟄ｦI", chapterNumber: 3, title: "莠梧ｬ｡髢｢謨ｰ", defaultEnabled: true },
-  "14": { subject: "謨ｰ蟄ｦI", chapterNumber: 4, title: "蝗ｳ蠖｢縺ｨ險磯㍼", defaultEnabled: true },
-  "15": { subject: "謨ｰ蟄ｦI", chapterNumber: 5, title: "繝・・繧ｿ縺ｮ蛻・梵", defaultEnabled: false },
-  "21": { subject: "謨ｰ蟄ｦII", chapterNumber: 1, title: "縺・ｍ縺・ｍ縺ｪ蠑・, defaultEnabled: true },
-  "22": { subject: "謨ｰ蟄ｦII", chapterNumber: 2, title: "隍・ｴ謨ｰ縺ｨ譁ｹ遞句ｼ・, defaultEnabled: true },
-  "23": { subject: "謨ｰ蟄ｦII", chapterNumber: 3, title: "蝗ｳ蠖｢縺ｨ譁ｹ遞句ｼ・, defaultEnabled: true },
-  "24": { subject: "謨ｰ蟄ｦII", chapterNumber: 4, title: "荳芽ｧ帝未謨ｰ", defaultEnabled: true },
-  "25": { subject: "謨ｰ蟄ｦII", chapterNumber: 5, title: "謖・焚髢｢謨ｰ縺ｨ蟇ｾ謨ｰ髢｢謨ｰ", defaultEnabled: true },
-  "26": { subject: "謨ｰ蟄ｦII", chapterNumber: 6, title: "蠕ｮ蛻・ｳ・, defaultEnabled: true },
-  "27": { subject: "謨ｰ蟄ｦII", chapterNumber: 7, title: "遨榊・豕・, defaultEnabled: true },
-  "31": { subject: "謨ｰ蟄ｦIII", chapterNumber: 1, title: "髢｢謨ｰ", defaultEnabled: true },
-  "32": { subject: "謨ｰ蟄ｦIII", chapterNumber: 2, title: "讌ｵ髯・, defaultEnabled: true },
-  "33": { subject: "謨ｰ蟄ｦIII", chapterNumber: 3, title: "蠕ｮ蛻・ｳ・, defaultEnabled: true },
-  "34": { subject: "謨ｰ蟄ｦIII", chapterNumber: 4, title: "蠕ｮ蛻・ｳ輔・蠢懃畑", defaultEnabled: true },
-  "35": { subject: "謨ｰ蟄ｦIII", chapterNumber: 5, title: "遨榊・豕・, defaultEnabled: true },
-  "36": { subject: "謨ｰ蟄ｦIII", chapterNumber: 6, title: "遨榊・豕輔・蠢懃畑", defaultEnabled: true },
-  "41": { subject: "謨ｰ蟄ｦA", chapterNumber: 1, title: "蝣ｴ蜷医・謨ｰ", defaultEnabled: true },
-  "42": { subject: "謨ｰ蟄ｦA", chapterNumber: 2, title: "遒ｺ邇・, defaultEnabled: true },
-  "43": { subject: "謨ｰ蟄ｦA", chapterNumber: 3, title: "蝗ｳ蠖｢縺ｮ諤ｧ雉ｪ", defaultEnabled: true },
-  "44": { subject: "謨ｰ蟄ｦA", chapterNumber: 4, title: "謨ｰ蟄ｦ縺ｨ莠ｺ髢薙・豢ｻ蜍・, defaultEnabled: false },
-  "51": { subject: "謨ｰ蟄ｦB", chapterNumber: 1, title: "謨ｰ蛻・, defaultEnabled: true },
-  "52": { subject: "謨ｰ蟄ｦB", chapterNumber: 2, title: "邨ｱ險育噪縺ｪ謗ｨ貂ｬ", defaultEnabled: false },
-  "61": { subject: "謨ｰ蟄ｦC", chapterNumber: 1, title: "蟷ｳ髱｢荳翫・繝吶け繝医Ν", defaultEnabled: true },
-  "62": { subject: "謨ｰ蟄ｦC", chapterNumber: 2, title: "遨ｺ髢薙・繝吶け繝医Ν", defaultEnabled: true },
-  "63": { subject: "謨ｰ蟄ｦC", chapterNumber: 3, title: "隍・ｴ謨ｰ蟷ｳ髱｢", defaultEnabled: true },
-  "64": { subject: "謨ｰ蟄ｦC", chapterNumber: 4, title: "蟷ｳ髱｢荳翫・譖ｲ邱・, defaultEnabled: true }
+  "11": { subject: "数学I", chapterNumber: 1, title: "数と式", defaultEnabled: false },
+  "12": { subject: "数学I", chapterNumber: 2, title: "集合と命題", defaultEnabled: false },
+  "13": { subject: "数学I", chapterNumber: 3, title: "二次関数", defaultEnabled: true },
+  "14": { subject: "数学I", chapterNumber: 4, title: "図形と計量", defaultEnabled: true },
+  "15": { subject: "数学I", chapterNumber: 5, title: "データの分析", defaultEnabled: false },
+  "21": { subject: "数学II", chapterNumber: 1, title: "いろいろな式", defaultEnabled: true },
+  "22": { subject: "数学II", chapterNumber: 2, title: "複素数と方程式", defaultEnabled: true },
+  "23": { subject: "数学II", chapterNumber: 3, title: "図形と方程式", defaultEnabled: true },
+  "24": { subject: "数学II", chapterNumber: 4, title: "三角関数", defaultEnabled: true },
+  "25": { subject: "数学II", chapterNumber: 5, title: "指数関数と対数関数", defaultEnabled: true },
+  "26": { subject: "数学II", chapterNumber: 6, title: "微分法", defaultEnabled: true },
+  "27": { subject: "数学II", chapterNumber: 7, title: "積分法", defaultEnabled: true },
+  "31": { subject: "数学III", chapterNumber: 1, title: "関数", defaultEnabled: true },
+  "32": { subject: "数学III", chapterNumber: 2, title: "極限", defaultEnabled: true },
+  "33": { subject: "数学III", chapterNumber: 3, title: "微分法", defaultEnabled: true },
+  "34": { subject: "数学III", chapterNumber: 4, title: "微分法の応用", defaultEnabled: true },
+  "35": { subject: "数学III", chapterNumber: 5, title: "積分法", defaultEnabled: true },
+  "36": { subject: "数学III", chapterNumber: 6, title: "積分法の応用", defaultEnabled: true },
+  "41": { subject: "数学A", chapterNumber: 1, title: "場合の数", defaultEnabled: true },
+  "42": { subject: "数学A", chapterNumber: 2, title: "確率", defaultEnabled: true },
+  "43": { subject: "数学A", chapterNumber: 3, title: "図形の性質", defaultEnabled: true },
+  "44": { subject: "数学A", chapterNumber: 4, title: "数学と人間の活動", defaultEnabled: false },
+  "51": { subject: "数学B", chapterNumber: 1, title: "数列", defaultEnabled: true },
+  "52": { subject: "数学B", chapterNumber: 2, title: "統計的な推測", defaultEnabled: false },
+  "61": { subject: "数学C", chapterNumber: 1, title: "平面上のベクトル", defaultEnabled: true },
+  "62": { subject: "数学C", chapterNumber: 2, title: "空間のベクトル", defaultEnabled: true },
+  "63": { subject: "数学C", chapterNumber: 3, title: "複素数平面", defaultEnabled: true },
+  "64": { subject: "数学C", chapterNumber: 4, title: "平面上の曲線", defaultEnabled: true }
 };
 
 export const defaultEnabledChapters = () => Object.fromEntries(
@@ -42,7 +42,6 @@ export const defaultEnabledChapters = () => Object.fromEntries(
 
 export const chapterLabel = (code: string) => {
   const found = CHAPTERS[code];
-  if (found) return `隨ｬ${found.chapterNumber}遶 ${found.title}`;
-  return `${SUBJECTS[code[0]] ?? "謨ｰ蟄ｦ"}繝ｻ隨ｬ${Number(code[1]) || "?"}遶`;
+  if (found) return `第${found.chapterNumber}章 ${found.title}`;
+  return `${SUBJECTS[code[0]] ?? "数学"}・第${Number(code[1]) || "?"}章`;
 };
-
