@@ -51,6 +51,16 @@ export interface AppSettings {
   theme: "system" | "light" | "dark";
   autoAdvance: boolean;
   lastRoute: string;
+  lastSubjectCode?: string;
+  lastChapterCode?: string;
+  lastExampleId?: string;
+  listPreferences?: Record<string, ListPreferences>;
+}
+
+export interface ListPreferences {
+  query: string;
+  filter: string;
+  sort: string;
 }
 
 export interface ImportFile {
@@ -69,3 +79,4 @@ export interface ImportResult {
   duplicateIds: string[];
   duplicateContentIds: string[];
 }
+
